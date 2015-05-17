@@ -1,0 +1,33 @@
+body, p, span, table, th, td{
+	padding: 0;
+	margin: 0;
+	font-family: tahoma, arial;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+body{
+	background-color: #E3DEC1;
+}
+
+p.task{
+	font-weight: bold;
+	color: #E89F65;
+	font-size: 1.2em;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.mainTitle{
+	color: #E89F65;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#container{
+    width: 50%;
+    margin: auto;
+}
+
+
