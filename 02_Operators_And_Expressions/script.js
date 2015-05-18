@@ -102,11 +102,11 @@ function IsPointInside(x, y) {
 }
 
 var points = [
-    { x: 0, y: 1 },
-    { x: -2, y: 0 },
-    { x: -1, y: 2 },
-    { x: 1.5, y: -1 },
-    { x: 5, y: 5 }
+	{ x: 0, y: 1 },
+	{ x: -2, y: 0 },
+	{ x: -1, y: 2 },
+	{ x: 1.5, y: -1 },
+	{ x: 5, y: 5 }
 ];
 
 for (var i = 0; i < points.length; i++) {
@@ -124,17 +124,15 @@ console.log('');
 console.log('Problem 7. Is prime');
 
 function IsPrime(number) {
-    for (var i = 2; i < Math.floor(number / 2) ; i++) {
-        if (number % i == 0)
-        {
+    for (var i = 2; i < Math.sqrt(Math.abs(number)) ; i++) {
+        if (number % i == 0) {
             return false;
         }
     }
     return true;
 }
 
-function PrintResult(number)
-{
+function PrintResult(number) {
     if (IsPrime(number)) {
         console.log('Number ' + number + ' is a prime number.');
     }
@@ -149,9 +147,24 @@ PrintResult(51);
 PrintResult(97);
 PrintResult(100);
 PrintResult(-3);
+PrintResult(-50);
 
 //Problem 8. Trapezoid area
 console.log('');
 console.log('Problem 8. Trapezoid area');
+
+function Area(a, b, h) {
+    return (a + b) * h / 2;
+}
+
+function round(value, decimals) {
+    return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+}
+
+console.log('a = 5  b = 7  h = 12  >>>>>  A = ' + round(Area(5, 7, 12), 7));
+console.log('a = 2  b = 1  h = 33  >>>>>  A = ' + round(Area(2, 1, 33), 7));
+console.log('a = 8.5  b = 4.3  h = 2.7  >>>>>  A = ' + round(Area(8.5, 4.3, 2.7), 7));
+console.log('a = 100  b = 200  h = 300  >>>>>  A = ' + round(Area(100, 200, 300), 7));
+console.log('a = 0.222  b = 0.333  h = 0.555  >>>>>  A = ' + round(Area(0.222, 0.333, 0.555), 7));
 
 
