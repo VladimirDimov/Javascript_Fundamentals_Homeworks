@@ -231,12 +231,56 @@ pr('Youngest person: ' + YoungestPerson(people, 'Age'), 'output');
 // values - arrays with people in this groups
 // Use function overloading (i.e. just one function)
 // ===========================================================================
+pr('');
+pr('Problem 6.');
+var people = [
+new Person('Pesho', 'Petrov', 20),
+new Person('Ivan', 'Ivanov', 28),
+new Person('Boncho', 'Genchev', 19),
+new Person('Kamen', 'Donev', 40),
+new Person('Toncho', 'Tonev', 20),
+new Person('Ivan', 'Petrov', 20)
+];
 
+pr('Input array ofpeople:', 'input');
+for (var i = 0; i < people.length; i++) {
+	pr(people[i].toString(), 'input');
+};
 
+function GroupBy(arr, prop){
+	if (!arr[0].hasOwnProperty(prop)) {
+		return 'Invalid property name';
+	};
+	var result = {};
+	result['GroupName'] = prop;
+	result['Collection'] = {};
+	for (var i = 0; i < arr.length; i++) {
+		if (result.Collection[arr[i][prop]]) {
+			result.Collection[arr[i][prop]].push(arr[i]);
+		}
+		else{
+			result.Collection[arr[i][prop]] = [arr[i]];
+		};		
+	};
 
+		result['toString'] = function (){
+		var resultString = 'Group by: ' + result.GroupName + '\n';
+		for(var prop in result.Collection){
+			resultString += result.GroupName + ' ' + prop + ':\n';
+			for (var i = 0; i < result.Collection[prop].length; i++) {
+				resultString += result.Collection[prop][i].toString() + '\n';
+			};
+		}
 
+		return resultString;
+	}
 
+	return result;
+}
 
-
-
-
+pr('Testing group by Age');
+var groupByAge = GroupBy(people, 'Age');
+pr(groupByAge.toString(), 'output');
+pr('Testing group by first name');
+var groupByFirstName = GroupBy(people, 'FirstName');
+pr(groupByFirstName.toString(), 'output');

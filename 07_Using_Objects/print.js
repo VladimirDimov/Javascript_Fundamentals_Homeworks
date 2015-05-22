@@ -1,6 +1,10 @@
 function pr(t, style) {
-	var element = document.createElement('p');
-	var node = document.createTextNode(t);
+// print to console
+console.log(t);
+
+//print to html
+tHtml = t.replace(/\n/g, '<br>') // Implementing the new line special character.
+var element = document.createElement('p');
 //Apply styles
 switch(style){
 	case 'mainTitle':
@@ -17,12 +21,7 @@ switch(style){
 	break;
 	default:
 	break;
-
-	function asd(){}
 }
-element.appendChild(node);
+element.innerHTML = tHtml;
 document.getElementById('container').appendChild(element);
-
-// pr to console
-console.log(t);
 }
