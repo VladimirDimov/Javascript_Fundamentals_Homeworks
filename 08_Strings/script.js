@@ -1,0 +1,267 @@
+// Problem 1. Reverse string
+// =========================
+// Write a JavaScript function that reverses a string and returns it.
+// ==================================================================
+print('');
+print('Problem 1. Reverse string', 'taskTitle');
+var strings = ['Pesho', 'Gosho', 'Tosho'];
+
+function Reverse(str){
+	var reversed = '';
+	for (var i = str.length - 1; i >= 0; i--) {
+		reversed += str[i];
+	};
+
+	return reversed;
+}
+
+for(var i in strings){
+	print('String: ' + strings[i] + ' >>>>> Reversed: ' + Reverse(strings[i]), 'output');
+}
+
+// Problem 2. Correct brackets
+// ===========================
+// Write a JavaScript function to check if in a given expression the brackets are put correctly.
+// =============================================================================================
+print('');
+print('Problem 2. Correct brackets', 'taskTitle');
+var expressions = ['(a+b)*c', '((a+b)*c) - (b+d)', ')a+b(', '((a+b)', '(a+b)))(', 'a+b'];
+
+function IsCorrectBrackets(expr){
+	var openBrackets = 0;
+	var closeBrackets = 0;
+
+	for (var i = 0; i < expr.length; i++) {
+		if(expr[i] == '('){openBrackets++}
+			else if (expr[i] == ')') {closeBrackets++};
+			if (closeBrackets > openBrackets) {return false};
+		};
+
+		if (openBrackets != closeBrackets) {return false}
+			else{return true};	
+	}
+
+	for (var i = 0; i < expressions.length; i++) {
+		var bracketsCheck = IsCorrectBrackets(expressions[i]) ? 'correct' : 'incorrect';
+		print('Expression: ' + expressions[i] + ' >>>>> ' + bracketsCheck, 'output');
+	};
+
+// Problem 3. Sub-string in text
+// ==============================
+// Write a JavaScript function that finds how many times a 
+// substring is contained in a given text (perform case insensitive search).
+// =========================================================================
+print('');
+print('Problem 3. Sub-string in text', 'taskTitle');
+var text = 'The text is as follows: We are living in an yellow submarine. We don\'t have anything else. inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.'
+var substring = 'in';
+
+function CountSubstring(text, substring, startIndex, startCounter){
+	var left = startIndex || 0;
+	var index = text.indexOf(substring, left);
+	var counter = startCounter || 0;
+	if (index == -1) {
+		return counter;
+	} else{
+		counter++;
+		var newIndex = index + substring.length;
+		if (newIndex > text.length - 1) {
+			return counter;
+		} else{
+			return CountSubstring(text, substring, newIndex, counter);
+		};
+	};	
+}
+
+print('Input: ' + text, 'input');
+print('Look for substring "' + substring + '"', 'input');
+print('Result: ' + CountSubstring(text, substring));
+
+var text2 = "pesho"
+var substring2 = 'gosho';
+print('Input: ' + text2, 'input');
+print('Look for substring "' + substring2 + '"', 'input');
+print('Result: ' + CountSubstring(text2, substring2));
+
+// Problem 4. Parse tags
+// =====================
+// You are given a text. Write a function that changes the text in all regions:
+// ============================================================================
+print('');
+print('Problem 4. Parse tags', 'taskTitle');
+var text = '<upcase>text</upcase> to uppercase';
+
+function ParseTags(text, left, right){
+	left = left || 0;
+	right = right || 0;
+	var Tag;
+	var tagStartPosition = text.indexOf('<', left);
+	var tagEndPosition = text.indexOf('>', tagStartPosition);
+	Tag = text.substring(tagStartPosition+1, tagEndPosition);
+}
+
+ParseTags(text);
+
+// Problem 5. nbsp
+// ===============
+// Write a function that replaces non breaking white-spaces in a text with &nbsp;
+// ==============================================================================
+print('');
+print('Problem 5. nbsp', 'taskTitle');
+
+function Nbsp(text){	
+	var result = text.replace(/\s/g, '&nbsp');
+	return result;
+}
+
+var text = 'Write a function that replaces non breaking white-spaces       in a text    with    &nbsp;';
+print('Input: ' + text,'input');
+print('Result: ' + Nbsp(text), 'output');
+
+// Problem 6. Extract text from HTML
+// =================================
+// Write a function that extracts the content of a html page given as text.
+// The function should return anything that is in a tag, without the tags.
+// ========================================================================
+print('');
+print('Problem 6. Extract text from HTML', 'taskTitle');
+var htmlText = '<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html>';
+
+// Without regular expressions
+function RemoveTags(text){
+	var isInsideTag = false;
+	var result = '';
+
+	for (var i = 0; i < text.length; i++) {
+		var curChar = text[i];				
+		switch(curChar){
+			case '<':
+			isInsideTag = true;
+			break;
+			case '>':
+			isInsideTag = false;
+			default:
+			if (isInsideTag || curChar == '>') {
+				break;
+			}
+			result += curChar;
+			break;
+		}
+	};
+	return result;
+}
+
+print('result: ' + RemoveTags(htmlText), 'output');
+
+// With regex
+print('Result (using regex): ' + htmlText.replace(/<(.*?)>/g, ''), 'output');
+
+// Problem 7. Parse URL
+// ====================
+// Write a script that parses an URL address given in the format: [protocol]:
+// //[server]/[resource] and extracts from it the [protocol], [server] and [resource] elements.
+// Return the elements in a JSON object.
+// ============================================================================================
+print('');
+print('Problem 7. Parse URL', 'taskTitle');
+var urlAddress = 'http://telerikacademy.com/Courses/Courses/Details/239';
+var urlArray = urlAddress.split(/:?\/?\//);
+var protocol =  urlArray[0];
+var server = urlArray[1];
+var resource = urlArray.splice(2).join('\/');
+print('Url: ' + urlAddress, 'input');
+print('Protocol: ' + protocol, 'output');
+print('Server: ' + server, 'output');
+print('Resource: ' + resource, 'output');
+
+// Problem 8. Replace tags
+// =======================
+// Write a JavaScript function that replaces in a HTML document given 
+// as string all the tags <a href="…">…</a> with corresponding tags [URL=…]…/URL].
+// ===============================================================================
+print('');
+print('Problem 8. Replace tags', 'taskTitle');
+
+var input = '<p>Please visit <a href="http://academy.telerik.com">our site</a> to choose a training course. Also visit <a href="www.devbg.org">our forum</a> to discuss the courses.</p>';
+
+function ReplaceTags(text){
+	var result = text.replace(/(<a href=)(.*?)(>)/g, '[URL=$2]');
+	return result;
+}
+
+print(input , 'input');
+print(ReplaceTags(input), 'output');
+
+// Problem 9. Extract e-mails
+// ==========================
+// Write a function for extracting all email addresses from given text.
+// All sub-strings that match the format @… should be recognized as emails.
+// Return the emails as array of strings.
+// ========================================================================
+print('');
+print('Problem 9. Extract e-mails', 'input');
+
+var input = 'Gosho\'s personal email is gosho1@bongo.com. He has another email: gogo@vba.com. His working email is gosho_goshev@work.org';
+
+function ExtractEmails(text){
+	var pattern = /\b\S+@\S+\.\S+\b/g;
+	var result = text.match(pattern);
+	return result;
+}
+
+var emails = ExtractEmails(input);
+
+for (var i = 0; i < emails.length; i++) {
+	print((i+1) + ': ' + emails[i], 'output');
+};
+
+// Problem 10. Find palindromes
+// ============================
+// Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".
+// =============================================================================================
+print('');
+print('Problem 10. Find palindromes', 'taskTitle');
+var pattern = /\w+/g;
+var text = 'Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".'
+var words = text.match(pattern);
+
+function IsPalindrome(word){
+	var reversed = '';
+	for (var i = word.length - 1; i >= 0; i--) {
+		reversed += word[i];
+	};
+
+	if (word == reversed) {return true};
+	return false;
+}
+
+print('Input: ' + text, 'input');
+var palindromes = [];
+
+for (var i = 0; i < words.length; i++) {
+	if (IsPalindrome(words[i])) {
+		palindromes.push(words[i]);
+	};
+};
+
+var result = '';
+if (palindromes.length > 0) {
+	result += 'Palindromes: ';	
+	result += palindromes.join(', ');
+} else{
+	result = 'There are no palindromes!'
+};
+
+print(result, 'output');
+
+// Problem 11. String format
+// =========================
+// Write a function that formats a string using placeholders.
+// The function should work with up to 30 placeholders and all types.
+// ==================================================================
+print('');
+print('Problem 11. String format', 'taskTitle');
+
+
+
+
