@@ -262,6 +262,71 @@ print(result, 'output');
 print('');
 print('Problem 11. String format', 'taskTitle');
 
+function UserException(message) {
+	this.message = message;
+	this.name = "UserException";
+}
 
+function stringFormat(text, arg){
+	var args = [];
+	for (var i = 1; i < arguments.length; i++) {
+		args[i-1] = arguments[i];
+	};
 
+	for (var i = 0; i < args.length; i++) {
 
+		var reg = new RegExp('\\{' + i + '\\}', 'g');
+		
+		if (text.indexOf('\{' + i + '\}') == -1) {
+			throw new UserException('Invalid placeholders');
+		} else{
+			text = text.replace(reg , args[i]);
+		};
+	};	
+
+	return text;
+}
+
+print(stringFormat('{0} {1} Age: {2} => First name: {0}    Last name: {1}', 'Pesho', 'Ivanov', 25), 'output');
+
+// Problem 12. Generate list
+// =========================
+// Write a function that creates a HTML <ul> using a template for every HTML <li>.
+// The source of the list should be an array of elements.
+// Replace all placeholders marked with –{…}– with the value of the corresponding property of the object.
+// ======================================================================================================
+function Person(name, age){
+	return{
+		name: name,
+		age: age
+	}
+}
+
+var people = [
+Person('Pesho', 30),
+Person('Ivan',  25),
+Person('Minka',  20)];
+
+function AppendUl(array, id){
+	var unsortedList = document.createElement('ul');
+	unsortedList.id = "list-people";
+	var template = '<div data-type="template" id="list-item"><strong>-{name}-</strong> <span>-{age}-</span></div>';
+	
+	for (var i = 0; i < array.length; i++) {
+		var newLi = document.createElement('li');
+		var curInnerHtml = template;		
+
+		for(var prop in array[i]){
+			var reg = new RegExp('-\\{' + prop + '\\}-', 'g');
+			curInnerHtml = curInnerHtml.replace(reg, array[i][prop]);
+		}
+
+		newLi.innerHTML = curInnerHtml;
+		unsortedList.appendChild(newLi);
+	};
+
+	unsortedList.style.paddingLeft = '30px';
+	document.body.appendChild(unsortedList);
+}
+
+AppendUl(people, 'list-people');
