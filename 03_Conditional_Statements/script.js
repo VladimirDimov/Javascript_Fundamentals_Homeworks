@@ -1,3 +1,4 @@
+function task1(){
 //  Problem 1. Exchange if greater
 //  Write an if statement that takes two double variables a and b and exchanges
 //  their values if the first one is greater than the second.
@@ -23,7 +24,9 @@ var pairs = [
 for (var i = 0; i < pairs.length; i++) {
 	console.log(pairs[i] + '   >>>>>   ' + Exchange(pairs[i][0], pairs[i][1]));
 }
+}
 
+function task2(){
 //  Problem 2. Multiplication Sign
 //  Write a script that shows the sign (+, - or 0) of the product
 //  of three real numbers, without calculating it.
@@ -69,7 +72,7 @@ function MultiplicationSign(a, b, c) {
 	};
 }
 
-var numbers = [
+var numbers_2 = [
 [5, 2, 2],
 [-2, -2, 1],
 [-2, 4, 3],
@@ -77,21 +80,23 @@ var numbers = [
 [-1, -0.5, -5.1]
 ]
 
-for (var i = 0; i < numbers.length; i++) {
-	var a = numbers[i][0];
-	var b = numbers[i][1];
-	var c = numbers[i][2];
+for (var i = 0; i < numbers_2.length; i++) {
+	var a = numbers_2[i][0];
+	var b = numbers_2[i][1];
+	var c = numbers_2[i][2];
 
-	console.log(numbers[i] + '  >>>>  ' + MultiplicationSign(a, b, c));
+	console.log(numbers_2[i] + '  >>>>  ' + MultiplicationSign(a, b, c));
 };
+}
 
+function task3(){
 //	Problem 3. The biggest of Three
 // 	Write a script that finds the biggest of three numbers.
 //	Use nested if statements.
 console.log('');
 console.log('Problem 3. The biggest of Three');
 
-function Biggest(a, b, c) {
+function BiggestOfThree(a, b, c) {
 	if (a >= b) {
 		if (a >= c) {
 			return a;
@@ -107,7 +112,7 @@ function Biggest(a, b, c) {
 	}
 }
 
-var numbers = [
+var numbers_3 = [
 [5, 2, 2],
 [-2, -2, 1],
 [-2, 4, 3],
@@ -115,13 +120,15 @@ var numbers = [
 [-0.1, -0.5, -1.1]
 ];
 
-for (var i = 0; i < numbers.length; i++) {
-	var a = numbers[i][0];
-	var b = numbers[i][1];
-	var c = numbers[i][2];
-	console.log(numbers[i] + '  >>>>>  ' + Biggest(a, b, c));
+for (var i = 0; i < numbers_3.length; i++) {
+	var a = numbers_3[i][0];
+	var b = numbers_3[i][1];
+	var c = numbers_3[i][2];
+	console.log(numbers_3[i] + '  >>>>>  ' + BiggestOfThree(a, b, c));
 };
+}
 
+function task4(){
 //	Problem 4. Sort 3 numbers
 // 	Sort 3 real values in descending order.
 // 	Use nested if statements.
@@ -168,7 +175,9 @@ for (var i = 0; i < numbers.length; i++) {
 
 	console.log(numbers[i] + '  >>>>  ' + Sort(a, b, c));
 };
+}
 
+function task5(){
 //	Problem 5. Digit as word
 //	========================
 // 	Write a script that asks for a digit (0-9), and depending on the input, 
@@ -201,7 +210,7 @@ function DigitAsWord(digit) {
 		case 9:
 		return 'Nine';
 		default:
-		return 'Not a number';
+		return 'Not a digit';
 	}
 }
 
@@ -209,8 +218,10 @@ for (var i = 0; i < 10; i++) {
 	console.log(i + '  >>>>>  ' + DigitAsWord(i));
 };
 
-console.log('Gosho  >>>>>  ' + DigitAsWord('Gosho'));
+console.log('10  >>>>>  ' + DigitAsWord('10'));
+}
 
+function task6(){
 // Problem 6. Quadratic equation
 // =============================
 // Write a script that reads the coefficients a, b and c of a quadratic equation 
@@ -254,10 +265,12 @@ for (var i = 0; i < equations.length; i++) {
 		console.log(a + 'x2 + ' + b + 'x + ' + c + '  >>>>  ' + 'x1 = ' + solution[0] + ',  x2 = ' + solution[1]);
 	}
 	else if (typeof(solution) == 'number') {
-		console.log(a + 'x2 + ' + b + 'x + ' + c + '  >>>>  ' + 'x = ' + solution);
+		console.log(a + 'x2 + ' + b + 'x + ' + c + '  >>>>  ' + 'x1 = x2 = ' + solution);
 	};
 };
+}
 
+function task7(){
 // Problem 7. The biggest of five numbers
 // ======================================
 // Write a script that finds the greatest of given 5 variables.
@@ -361,7 +374,9 @@ for (var i = 0; i < numbers.length; i++) {
 
 	console.log(numbers[i] + '  >>>>>  ' + Biggest(a, b, c, d, e));
 };
+}
 
+function task8(){
 // Problem 8. Number as words
 // ==========================
 // Write a script that converts a number in the range [0…999] to words, 
@@ -466,7 +481,7 @@ function NumberName(number){
 	};
 }
 
-var numbers = [0, 5, 19, 35, 80, 123, 300, 'Gosho', 405, 410, 515, 555, 'Pesho'];
+var numbers = [0, 5, 19, 35, 80, 123, 300, 'Gosho', 405, 410, 515, 555, 999];
 
 for (i = 0; i < numbers.length; i++) {
 	var currentNumber = numbers[i];
@@ -476,3 +491,13 @@ for (i = 0; i < numbers.length; i++) {
 	};
 	console.log(currentNumber + '  >>>>>  ' + NumberName(currentNumber));
 };
+}
+
+task1();
+task2();
+task3();
+task4();
+task5();
+task6();
+task7();
+task8();
