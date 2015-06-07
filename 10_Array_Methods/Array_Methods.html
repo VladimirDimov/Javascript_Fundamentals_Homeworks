@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Functions</title>
+    <title>Array Methods</title>
     <style>
         *{
             padding: 0;
@@ -61,7 +61,7 @@ console.log(t);
 
 //print to html
 tHtml = t.replace(/\n/g, '<br>'); // Implementing the new line special character
-tHtml = tHtml.replace(/\s/g, '&nbsp'); // Implemanting multiple whitespaces
+tHtml = tHtml.replace(/\s/g, '&nbsp').replace(/</g, '&lt;').replace(/>/g, '&gt;'); // Implemanting multiple whitespaces and '<' and '>'
 var element = document.createElement('p');
 //Apply styles
 switch(style){
@@ -87,7 +87,7 @@ document.getElementById('container').appendChild(element);
 </head>
 <body>
     <header>
-        <p class="mainTitle">Using Objects</p>
+        <p class="mainTitle">Array Methods</p>
         <p>***All results are logged in the console!***</p>
     </header>
     <div id="container"></div>

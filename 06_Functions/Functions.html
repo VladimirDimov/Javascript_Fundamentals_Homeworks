@@ -3,17 +3,94 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Arrays</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Functions</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            font-family: consolas, arrial;
+            color: white;
+        }
+
+        body{
+            background-color: #2f2a2a;      
+        }
+
+        header{
+            background-color: #06069d;
+            padding: 20px;
+        }
+
+        #container{
+            padding-left: 20px;
+        }
+
+        p{
+            padding-top: 5px;
+        }
+
+        .mainTitle{
+            font-size: 1.5em;
+            font-weight: bold;
+            color: brown;
+        }
+
+        .taskTitle{
+            padding-top: 20px;
+            padding-bottom: 10px;
+            font-size: 1.2em;
+            text-decoration: underline;
+            color: white;
+        }
+
+        .input, .input *{
+            color: red;
+            font-style: italic;
+        }
+
+        .output, .output *{
+            color: blue;
+            font-style: italic;
+        }
+    </style>
+    <script>
+        function print(t, style) {
+// print to console
+console.log(t);
+
+//print to html
+tHtml = t.replace(/\n/g, '<br>'); // Implementing the new line special character
+tHtml = tHtml.replace(/\s/g, '&nbsp'); // Implemanting multiple whitespaces
+var element = document.createElement('p');
+//Apply styles
+switch(style){
+    case 'mainTitle':
+    element.className = 'mainTitle';
+    break;
+    case 'taskTitle':
+    element.className = 'taskTitle';
+    break;
+    case 'input':
+    element.className = 'input';
+    break;
+    case 'output':
+    element.className = 'output';
+    break;
+    default:
+    break;
+}
+element.innerHTML = tHtml;
+document.getElementById('container').appendChild(element);
+}
+</script>
 </head>
 <body>
     <header>
-        <p class="mainTitle">Arrays</p>
-        <p>All results are logged in the console!</p>
+        <p class="mainTitle">Functions</p>
+        <p>***All results are logged in the console!***</p>
     </header>
     <div id="container"></div>
-    <div></div><div></div><div></div><div></div><div></div><div></div>
-
     <script src="script.js" type="text/javascript"></script>
 </body>
 </html>
